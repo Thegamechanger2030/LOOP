@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --theme-bg: #0D0712;
+  --theme-surface: #160D1F;
+  --theme-card: #1D1028;
+  --theme-border: #3B1F4D;
+  --theme-primary: #7C3AED;
+  --theme-secondary: #A855F7;
+  --theme-accent: #EF4444;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #0D0712;
+  color: #F8FAFC;
+  @apply antialiased selection:bg-[#EF4444] selection:text-white min-h-screen;
+  background-image: 
+    radial-gradient(ellipse at 15% 0%, rgba(124, 58, 237, 0.22) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 100%, rgba(239, 68, 68, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+  background-attachment: fixed;
+}
+
+/* Custom Purple-Red Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0712;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #7C3AED, #EF4444);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #A855F7, #F87171);
+}
+
+.glass-card {
+  background: rgba(29, 16, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #3B1F4D;
+}
+
+.glass-card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 16px 36px -10px rgba(124, 58, 237, 0.35);
+}
+
+.glass-input {
+  background: rgba(22, 13, 31, 0.85);
+  border: 1px solid #3B1F4D;
+  color: #F8FAFC;
+}
+.glass-input:focus {
+  border-color: #7C3AED;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+}
+
+.gradient-text-purple-red {
+  background: linear-gradient(135deg, #F8FAFC 0%, #A855F7 50%, #EF4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg-purple-red {
+  background: linear-gradient(135deg, #7C3AED 0%, #EF4444 100%);
+}
+
+.gradient-bg-purple-red-hover:hover {
+  background: linear-gradient(135deg, #8B5CF6 0%, #F87171 100%);
+}

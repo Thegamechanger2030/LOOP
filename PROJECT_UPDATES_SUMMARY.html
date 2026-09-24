@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project LOOP — Enterprise Red-Purple Theme & Three Account Login Report</title>
+  <style>
+    @media print {
+      body { background: white !important; color: #1e293b !important; }
+      .no-print { display: none !important; }
+      .card { border: 1px solid #e2e8f0 !important; background: white !important; box-shadow: none !important; }
+      h1, h2, h3 { color: #0f172a !important; }
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #0D0712;
+      color: #F8FAFC;
+      margin: 0;
+      padding: 40px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .header {
+      border-bottom: 2px solid #3B1F4D;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C3AED, #A855F7, #EF4444);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 22px;
+      color: white;
+    }
+    .title {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #F8FAFC, #A855F7, #EF4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #A78BFA;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+    .print-btn {
+      background: linear-gradient(135deg, #7C3AED, #EF4444);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 800;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .card {
+      background: #1D1028;
+      border: 1px solid #3B1F4D;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #EF4444;
+      margin-top: 0;
+      border-bottom: 1px solid #3B1F4D;
+      padding-bottom: 8px;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .account-box {
+      background: #160D1F;
+      border: 1px solid #3B1F4D;
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+    .account-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C3AED, #EF4444);
+      color: white;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px auto;
+    }
+    .code-block {
+      background: #160D1F;
+      border: 1px solid #3B1F4D;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: monospace;
+      font-size: 13px;
+      color: #EF4444;
+      margin: 10px 0;
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #A78BFA;
+      margin-top: 40px;
+      border-top: 1px solid #3B1F4D;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo-box">
+        <div class="logo-circle">L</div>
+        <div>
+          <h1 class="title">Project LOOP</h1>
+          <div class="subtitle">CUSTOMER INTELLIGENCE — RED-PURPLE ENTERPRISE THEME</div>
+        </div>
+      </div>
+      <button class="print-btn no-print" onclick="window.print()">🖨️ Save as PDF / Print</button>
+    </div>
+
+    <div class="card">
+      <h2>1. Global Theme Color System (Red-Purple AI SaaS)</h2>
+      <ul>
+        <li><strong>Primary:</strong> <code>#7C3AED</code> (Deep Purple)</li>
+        <li><strong>Secondary:</strong> <code>#A855F7</code> (Vibrant Purple)</li>
+        <li><strong>Accent:</strong> <code>#EF4444</code> (Crimson Red) &amp; Deep Red <code>#B91C1C</code></li>
+        <li><strong>Background &amp; Surface:</strong> <code>#0D0712</code> (Background), <code>#160D1F</code> (Surface), <code>#1D1028</code> (Card), <code>#3B1F4D</code> (Border)</li>
+        <li><strong>Typography:</strong> Main text <code>#F8FAFC</code>, Muted text <code>#A78BFA</code></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>2. Three Account Selectable Login Screen</h2>
+      <p>Split-layout login page containing 3 selectable profile cards connected to backend credentials:</p>
+      <div class="account-grid">
+        <div class="account-box">
+          <div class="account-avatar">MS</div>
+          <strong>MS Sir</strong><br>
+          <span style="font-size:11px; color:#A78BFA;">Administrator</span>
+        </div>
+        <div class="account-box">
+          <div class="account-avatar">DK</div>
+          <strong>DK Rawat</strong><br>
+          <span style="font-size:11px; color:#A78BFA;">Manager / Analyst</span>
+        </div>
+        <div class="account-box">
+          <div class="account-avatar">DN</div>
+          <strong>DN Jha</strong><br>
+          <span style="font-size:11px; color:#A78BFA;">Analyst / User</span>
+        </div>
+      </div>
+      <p style="margin-top:14px;">Selecting any profile and clicking <strong>[ Secure Login ]</strong> authenticates immediately.</p>
+    </div>
+
+    <div class="card">
+      <h2>3. Top Horizontal Navbar &amp; Far-Left Branding</h2>
+      <ul>
+        <li><strong>Logo Placement:</strong> LOOP Logo and brand name aligned completely to the <strong>FAR-LEFT</strong>.</li>
+        <li><strong>Logo Symbol:</strong> Minimal circular "L / Loop" symbol with Purple + Red gradient.</li>
+        <li><strong>Layout:</strong> Horizontal Navbar with Dashboard, Inbox, Trends, Ask LOOP, Reports, Settings, plus User Avatar and Logout button.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>4. How to Run</h2>
+      <div class="code-block">
+        cd c:\Users\abhay\Downloads\Project_LOOP_source\loop<br>
+        npm run dev
+      </div>
+      <p>Open <strong>http://localhost:3000</strong> in your browser.</p>
+    </div>
+
+    <div class="footer">
+      Generated for Project LOOP • Press Ctrl+P or click top button to save as PDF
+    </div>
+  </div>
+</body>
+</html>

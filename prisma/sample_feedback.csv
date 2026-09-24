@@ -1,0 +1,26 @@
+content,channel,customer_label,created_at
+"The new dashboard load times are blazing fast! Loving the clean analytics layout.",app_store,Sarah Jenkins,2026-08-10T10:15:00Z
+"Having trouble exporting custom CSV reports on the free plan. It throws a 500 error when filtering by date.",support_ticket,Mark TechCorp,2026-08-11T14:22:00Z
+"Pricing for the Pro plan feels a bit steep for small startup teams of under 5 members.",sales_call,Alex Rivera,2026-08-09T09:30:00Z
+"Mobile app crashes whenever I try to upload a customer screenshot on iOS 18.",app_store,Elena Rostova,2026-08-12T16:45:00Z
+"The Ask LOOP AI feature is incredible! Saved our product team hours of manual feedback categorization.",nps_survey,David K.,2026-08-13T11:00:00Z
+"Wish there was a direct Slack integration for instant customer support ticket notifications.",community,Devon SlackOps,2026-08-08T18:12:00Z
+"Great customer support team! Resolved our webhook authentication setup in less than 15 minutes.",support_ticket,Priya Sharma,2026-08-14T08:05:00Z
+"Dark mode is fantastic! Would love to see customizable chart color palettes next.",community,Chris UX,2026-08-13T20:30:00Z
+"Search bar in the inbox page feels sluggish when handling over 1000 items.",support_ticket,Tom Enterprise,2026-08-07T12:00:00Z
+"Onboarding checklist was super clear and allowed our team to go live in less than a day.",nps_survey,Jessica Taylor,2026-08-12T15:10:00Z
+"CSV importer fails silently when header columns are capitalized like 'Feedback' instead of 'content'.",support_ticket,Beta Tester #42,2026-08-14T09:40:00Z
+"The Voice-of-Customer PDF export is executive-ready and saved us so much time in our Q3 planning meeting.",sales_call,Rachel VP Product,2026-08-11T17:50:00Z
+"Need role-based permissions so viewers cannot edit theme tags or clear inbox items.",community,Security Officer Dan,2026-08-10T13:25:00Z
+"App UI looks super modern and clean. Really enjoying the new theme tagging features!",nps_survey,Liam Miller,2026-08-14T12:15:00Z
+"Filtering by sentiment positive vs negative helps us immediately catch urgent bugs.",sales_call,Carlos Founder,2026-08-13T16:00:00Z
+"SSO SAML login configuration documentation is outdated and missing Okta configuration steps.",support_ticket,IT Admin Systems,2026-08-06T11:30:00Z
+"Loved the new search filters and bulk status actions!",app_store,Emily Watson,2026-08-14T17:20:00Z
+"Response time on customer tickets was over 48 hours over the weekend.",nps_survey,Brian Ops,2026-08-05T09:00:00Z
+"Adding Gemini AI model support makes classification super quick and accurate!",community,AI Enthusiast,2026-08-14T18:00:00Z
+"Would be awesome to have automated email alerts for spikes in negative sentiment.",sales_call,Head of CX,2026-08-12T10:40:00Z
+"Love how intuitive the theme breakdown charts are. Very easy to share with leadership.",app_store,Chloe Bennett,2026-08-13T14:15:00Z
+"Notification badge doesn't reset after reading all inbox items until page refresh.",support_ticket,Jason Reed,2026-08-09T19:00:00Z
+"Super smooth onboarding experience for our entire 20-person support department.",nps_survey,Amanda White,2026-08-14T11:45:00Z
+"Exporting reports to PDF takes a bit longer than expected on large datasets.",community,Tech Lead Dave,2026-08-11T08:30:00Z
+"Fantastic product! The automated sentiment score metric gives us immediate actionable insights.",app_store,Michael Scott,2026-08-14T15:30:00Z
