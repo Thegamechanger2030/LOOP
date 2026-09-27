@@ -144,23 +144,5 @@ prisma/
   seed.ts
 ```
 
-## Deploying to Vercel
 
-1. Push this repo to GitHub.
-2. Import it in Vercel.
-3. Add the three environment variables from `.env.example` in the Vercel
-   project settings (use your production `DATABASE_URL`).
-4. Set `NEXTAUTH_URL` to your production URL.
-5. Deploy, then run `npx prisma migrate deploy && npm run seed` against the
-   production database (e.g. via `vercel env pull` + a local run, or a
-   one-off script).
 
-## Notes on originality
-
-This codebase was scaffolded with AI assistance and is meant as a **starting
-point you understand and can extend** — not a copy-paste submission. Before
-you present it, make sure you can explain: how tenant isolation is enforced
-(`requireUser` + `workspaceId` filters), how classification prompts are
-built (`lib/ai.ts`), and how Ask LOOP's retrieve-then-answer flow works
-(`lib/search.ts` → `/api/insights/ask`). Mentors may ask you to modify any
-part of this live.

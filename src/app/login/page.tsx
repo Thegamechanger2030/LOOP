@@ -7,72 +7,42 @@ import {
   ShieldCheck,
   Zap,
   Sparkles,
-  CheckCircle2,
   Lock,
   ArrowRight,
   Loader2,
 } from "lucide-react";
 
-type AccountOption = {
-  id: string;
-  name: string;
-  role: string;
-  initials: string;
-  email: string;
-  avatarBg: string;
-};
-
-const ACCOUNTS: AccountOption[] = [
-  {
-    id: "ms",
-    name: "MS Sir",
-    role: "Administrator",
-    initials: "MS",
-    email: "admin@demo.loop",
-    avatarBg: "from-purple-600 to-red-500",
-  },
-  {
-    id: "dk",
-    name: "DK Rawat",
-    role: "Manager / Analyst",
-    initials: "DK",
-    email: "analyst@demo.loop",
-    avatarBg: "from-purple-600 to-pink-500",
-  },
-  {
-    id: "dn",
-    name: "DN Jha",
-    role: "Analyst / User",
-    initials: "DN",
-    email: "viewer@demo.loop",
-    avatarBg: "from-indigo-600 to-purple-600",
-  },
-];
-
 export default function LoginPage() {
   const router = useRouter();
-  const [selectedAccount, setSelectedAccount] = useState<AccountOption>(ACCOUNTS[0]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function handleLogin() {
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     setLoading(true);
     setError(null);
 
-    const result = await signIn("credentials", {
-      email: selectedAccount.email,
-      password: "Demo1234!",
-      redirect: false,
-    });
+    try {
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-    if (result?.error) {
-      setError("Invalid credentials or authentication error.");
+      if (!result?.ok || result.error) {
+        setError("Incorrect email or password. Please try again.");
+        return;
+      }
+
+      router.push("/dashboard");
+      router.refresh();
+    } catch {
+      setError("Unable to sign in right now. Please try again.");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    router.push("/dashboard");
-    router.refresh();
   }
 
   return (
@@ -171,13 +141,13 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* RIGHT SIDE: Account Selection & Login Form */}
+      {/* RIGHT SIDE: Login Form */}
       <div className="lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center items-center relative z-10">
-        <div className="w-full max-w-md space-y-8">
+        <form onSubmit={handleLogin} className="w-full max-w-md space-y-8">
           {/* Welcome Header */}
           <div className="text-center lg:text-left space-y-2">
             <h2 className="text-3xl font-extrabold text-white tracking-tight">Welcome to LOOP</h2>
-            <p className="text-sm font-medium text-[#A78BFA]">Select your account to continue</p>
+            <p className="text-sm font-medium text-[#A78BFA]">Sign in to continue</p>
           </div>
 
           {error && (
@@ -186,55 +156,45 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Three Account Cards */}
-          <div className="space-y-3.5">
-            {ACCOUNTS.map((acc) => {
-              const isSelected = selectedAccount.id === acc.id;
-              return (
-                <div
-                  key={acc.id}
-                  onClick={() => setSelectedAccount(acc)}
-                  className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between group ${
-                    isSelected
-                      ? "bg-[#1D1028] border-[#EF4444] shadow-combinedGlow scale-[1.02]"
-                      : "bg-[#160D1F] border-[#3B1F4D] hover:border-[#7C3AED] hover:bg-[#1D1028]/60"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    {/* Circular Avatar with Initials */}
-                    <div
-                      className={`w-12 h-12 rounded-full bg-gradient-to-br ${acc.avatarBg} flex items-center justify-center text-white font-black text-base shadow-md group-hover:scale-105 transition-transform`}
-                    >
-                      {acc.initials}
-                    </div>
-
-                    <div>
-                      <h3 className="text-base font-extrabold text-white flex items-center gap-2">
-                        {acc.name}
-                      </h3>
-                      <p className="text-xs font-semibold text-[#A78BFA]">{acc.role}</p>
-                    </div>
-                  </div>
-
-                  {/* Radio / Select Indicator */}
-                  <div className="shrink-0">
-                    {isSelected ? (
-                      <div className="w-6 h-6 rounded-full bg-gradient-to-r from-[#7C3AED] to-[#EF4444] flex items-center justify-center text-white shadow-glow">
-                        <CheckCircle2 className="w-4 h-4" />
-                      </div>
-                    ) : (
-                      <div className="w-6 h-6 rounded-full border-2 border-[#3B1F4D] group-hover:border-[#7C3AED]" />
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="email" className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#A78BFA]">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-xl border border-[#3B1F4D] bg-[#160D1F] px-4 py-3 text-sm text-white placeholder:text-[#8B7A99] focus:border-[#A855F7] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/40"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#A78BFA]">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-xl border border-[#3B1F4D] bg-[#160D1F] px-4 py-3 text-sm text-white placeholder:text-[#8B7A99] focus:border-[#A855F7] focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/40"
+                placeholder="Enter your password"
+              />
+            </div>
           </div>
 
           {/* Secure Login Button */}
           <div className="pt-2">
             <button
-              onClick={handleLogin}
+              type="submit"
               disabled={loading}
               className="w-full py-4 rounded-2xl bg-gradient-to-r from-[#7C3AED] to-[#EF4444] hover:from-[#8B5CF6] hover:to-[#F87171] text-white font-black text-sm uppercase tracking-wider shadow-combinedGlow flex items-center justify-center gap-2.5 transition transform active:scale-95 disabled:opacity-60"
             >
@@ -246,17 +206,14 @@ export default function LoginPage() {
               ) : (
                 <>
                   <Lock className="w-4 h-4" />
-                  <span>Secure Login as {selectedAccount.name}</span>
+                  <span>Secure Login</span>
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
 
-            <p className="text-center text-[11px] text-[#A78BFA] mt-4">
-              Logging into <strong className="text-white">{selectedAccount.email}</strong>
-            </p>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
