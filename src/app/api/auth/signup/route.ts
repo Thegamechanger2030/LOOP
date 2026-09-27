@@ -16,7 +16,9 @@ export async function POST(req: Request) {
 
   const { name, email, password, workspaceName } = parsed.data;
 
-  const existing = await db.user.findUnique({ where: { email } });
+  const existing = await db.user.findFirst({
+    where: { email: { equals: email, mode: "insensitive" } },
+  });
   if (existing) {
     return NextResponse.json({ error: "An account with that email already exists." }, { status: 409 });
   }

@@ -30,7 +30,18 @@ export default function SignupPage() {
       return;
     }
 
-    await signIn("credentials", { email: form.email, password: form.password, redirect: false });
+    const loginResult = await signIn("credentials", {
+      email: form.email,
+      password: form.password,
+      redirect: false,
+    });
+
+    if (!loginResult?.ok || loginResult.error) {
+      setError("Account created, but automatic login failed. Please sign in manually.");
+      setLoading(false);
+      return;
+    }
+
     router.push("/dashboard");
     router.refresh();
   }

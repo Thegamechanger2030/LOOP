@@ -5,6 +5,7 @@ import { NextAuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { db } from "./db";
+import { normalizeEmail } from "./validations";
 
 export type UserRole = "ADMIN" | "ANALYST" | "VIEWER";
 
@@ -21,7 +22,9 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
-        const user = await db.user.findUnique({ where: { email: credentials.email } });
+        const user = await db.user.findFirst({
+          where: { email: { equals: normalizeEmail(credentials.email), mode: "insensitive" } },
+        });
         if (!user) return null;
 
         const valid = await bcrypt.compare(credentials.password, user.passwordHash);
