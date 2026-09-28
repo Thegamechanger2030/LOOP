@@ -70,5 +70,24 @@ export async function retrieveRelevantFeedback(workspaceId: string, question: st
     .sort((a, b) => b.score - a.score)
     .slice(0, topK);
 
-  return ranked.map((r) => r.feedback);
+  if (ranked.length > 0) {
+    return ranked.map((r) => r.feedback);
+  }
+
+  // Seeded and older feedback may not have embedding rows. Search its text
+  // directly so those workspaces can still use Ask LOOP without re-importing.
+  const feedback = await db.feedback.findMany({
+    where: { workspaceId },
+    orderBy: { createdAt: "desc" },
+    take: 100,
+  });
+  const fallbackRanked = feedback
+    .map((item) => ({
+      feedback: item,
+      score: cosineSimilarity(questionVector, toVector(item.content)),
+    }))
+    .sort((a, b) => b.score - a.score);
+  const matches = fallbackRanked.filter((item) => item.score > 0).slice(0, topK);
+
+  return (matches.length > 0 ? matches : fallbackRanked.slice(0, topK)).map((item) => item.feedback);
 }
