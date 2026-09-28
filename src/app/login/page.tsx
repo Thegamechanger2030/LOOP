@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   ShieldCheck,
   Zap,
@@ -213,6 +214,12 @@ export default function LoginPage() {
             </button>
 
           </div>
+          <p className="text-center text-sm text-[#A78BFA]">
+            New to LOOP?{" "}
+            <Link href="/signup" className="font-bold text-white underline underline-offset-4">
+              Create an account
+            </Link>
+          </p>
         </form>
       </div>
     </div>
